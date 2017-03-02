@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="website of rejdoc">
+    <meta name="author" content="lisez">
+    <!--<link rel="icon" href="../../favicon.ico">-->
+
+    <title>司法文書重排版</title>
+
+    <link href="./bootstrap.min.css" rel="stylesheet">
+    <link href="./main.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">REJDoc</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#online">線上使用</a></li>
+            <li><a href="#download">下載使用</a></li>
+            <li><a href="#about">關於作者</a></li>
+            <li><a href="mailto:mm4324@gmail.com">使用回饋</a></li>
+            <li><a href="#about">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="thesite">
+        <h1>司法文書重排版</h1>
+        <p class="lead">將司法院司法文書系統所產生文件重新排版。</p>
+
+        <div class="row" id="online">
+          <h2>線上使用</h2>
+          <p class="laed form-group"><button onclick="getText()" class="btn btn-default">重新排版</button></p>
+          <div class="col-xs-12 col-md-6 form-group">
+            <textarea id="input" class="form-control" rows="10" placeholder="//在這裡貼上司法文書原文"></textarea>
+          </div>
+          <div class="col-xs-12 col-md-6 form-group">
+            <textarea id="output" class="form-control" rows="10" placeholder="//點擊「重新排版」後，這裡將產生重新排版文字"></textarea>
+          </div>
+        </div>
+
+        <div class="row" id="download">
+          <h2>下載使用</h2>
+        </div>        
+
+        <div class="row" id="about">
+          <h2>關於作者</h2>
+          <h3>lisez</h3>
+          <p>輔大法研公法組在學</p>
+        </div>
+
+        <div class="row">
+          <h4>Copyright (c) 2017-Present lisez</h4>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="getReJDocString.uni.js"></script>
+    <script type="text/javascript">
+    function getText(){
+      var result = getReJDocString(document.getElementById('input').value);
+      document.getElementById('output').value = result;
+    }
+    </script>
+    
+  </body>
+</html>
