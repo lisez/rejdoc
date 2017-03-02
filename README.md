@@ -1,6 +1,6 @@
 # 司法文書重排版
 
-![intro_640](/Users/sujingzhong/Box Sync/Workspace/rejdoc/screenshots/intro_640.gif)
+![intro_640](./screenshots/intro_640.gif)
 
 ## 介紹
 
