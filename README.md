@@ -1,5 +1,7 @@
 # 司法文書重排版
 
+![intro_640](/Users/sujingzhong/Box Sync/Workspace/rejdoc/screenshots/intro_640.gif)
+
 ## 介紹
 
 將司法文書系統所產生格式文字，重新進行排版，輸出純文字。目前支援：
