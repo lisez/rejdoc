@@ -3,7 +3,7 @@
  * Copyright (c) 2017-Present lisez <mm4324@gmail.com>
  * All rights reserved. This code is governed by a BSD-style license
  * that can be found in the LICENSE file.
- * @version 1.1
+ * @version 1.11
  ***********************************************/
 
 // get frame/ iframe content by AJAX
@@ -32,22 +32,26 @@ chrome.runtime.onInstalled.addListener(function(){
 	chrome.contextMenus.create({
 		title: '司法文書重排版',
 		id: 'relayout-judicial-doc',
-		contexts: ['frame', 'page', 'selection']
+		contexts: ['frame', 'page']
+	});
+	chrome.contextMenus.create({
+		title: '無空白複製',
+		id: 'no-blank-copy',
+		contexts: ['selection']
 	});
 });
 
 // trigger function
 chrome.contextMenus.onClicked.addListener(function(info, tab){
-	if(info.menuItemId === 'relayout-judicial-doc'){
+	if(info.menuItemId === 'no-blank-copy'){
+		// because the limit of chrome selection text, it returns string with out wrap and line breaks. 
+		// Only thing we can do is to replace all the blanks.
+		var _term = info.selectionText.replace(/\s+/gim,'');
+		executeCopy(_term);
+		return true;
+	}
 
-		// detect selection
-		if(info.selectionText){
-			// because the limit of chrome selection text, it returns string with out wrap and line breaks. 
-			// Only thing we can do is to replace all the blanks.
-			var _term = info.selectionText.replace(/\s+/gim,'');
-			executeCopy(_term);
-			return true;
-		}
+	if(info.menuItemId === 'relayout-judicial-doc'){
 
 		if(info.pageUrl.toLowerCase()=='http://jirs.judicial.gov.tw/index.htm'){
 			chrome.tabs.executeScript({
