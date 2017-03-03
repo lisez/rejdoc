@@ -21,4 +21,8 @@
 
 ### Chrome 擴充
 
-- 【1.11】新增：「無空白複製」選取文字自動移除空白並複製。因為Chrome瀏覽器天生限制，選取文字時即為純文字狀態，無法進行排版，只能達到移除空白效果。
+【1.11】新增：「無空白複製」選取文字自動移除空白並複製。因為Chrome瀏覽器天生限制，選取文字時即為純文字狀態，無法進行排版，只能達到移除空白效果。
+
+![no-blank-copy-1](/Users/sujingzhong/Box Sync/Workspace/rejdoc/screenshots/no-blank-copy-1.png)
+
+![no-blank-copy-2](/Users/sujingzhong/Box Sync/Workspace/rejdoc/screenshots/no-blank-copy-2.png)
