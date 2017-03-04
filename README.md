@@ -212,3 +212,8 @@
 - Chrome擴充功能：
   - [Chrome WebApp Store](https://chrome.google.com/webstore/detail/%E5%8F%B8%E6%B3%95%E6%96%87%E6%9B%B8%E9%87%8D%E6%8E%92%E7%89%88/eegidpmlcbalnjfgklfhblhjfhhljecb?hl=zh-TW)
   - [GitHub](https://github.com/lisez/rejdoc-gc)
+
+## 已知問題
+
+- 拉丁字母間空白亦將取代
+- 句尾為「。：！？」將自動斷行，無論下一行為何
