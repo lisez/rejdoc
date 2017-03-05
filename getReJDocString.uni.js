@@ -3,7 +3,7 @@
  * Copyright (c) 2017-Present lisez <mm4324@gmail.com>
  * All rights reserved. This code is governed by a BSD-style license
  * that can be found in the LICENSE file.
- * version: 1.1
+ * version: 1.2
  ***********************************************/
 
 /***************************************
@@ -71,9 +71,10 @@ function getReJDocString(input /*@params String*/){
 		// all others: combine
 		o+=term;
 	}
-	// remove line break wihch more than 2 or alone
+	// if first char is close mark or comma: combie
+	o = o.replace(/[\n\r]+([\u3009\u300b\u300d\u300f\u3011\u3015\u3017\u3019\u301b\uff0c,)\]])/gim, "$1");
+	// surplus line breaks: delete
 	o = o.replace(/^[\n\r]+/gim, '');
-	o = o.replace(/[\n\r]{2,}/gim, "\n");
 
 	return o;
 }
