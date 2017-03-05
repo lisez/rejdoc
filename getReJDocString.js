@@ -3,7 +3,7 @@
  * Copyright (c) 2017-Present lisez <mm4324@gmail.com>
  * All rights reserved. This code is governed by a BSD-style license
  * that can be found in the LICENSE file.
- * version: 1.2
+ * version: 1.2-20160305
  ***********************************************/
 
 /***************************************
@@ -36,6 +36,7 @@ function getReJDocString(input /*@params String*/){
 		if( /(?:^中華民國.+年.+月.+日$)/.test(term)	||
 			/(?:^【)/.test(term)						||
 			/(?:^裁判[字號日期案由全內文]+|^會議次別|^決議日期|^資料來源|^相關法條|^決議：|^討論事項：|提案：$|^歷審裁判)/.test(term)									 ||
+			/(?:^解釋[字號日期爭點文理由]+/.test(term)									 ||
 			/(?:第[\d、-]+條\([\d\.]+\)$)/.test(term)	
 			){o+="\n"+term+"\n";continue;}
 
@@ -52,7 +53,7 @@ function getReJDocString(input /*@params String*/){
 			if(/(?:^[主文理由犯罪事實及附表件註錄條文要旨：]{2,}$)/.test(term)){o+= "\n" + term+"\n";continue;}
 			
 			// judges and court officials
-			if(/(?:^.+庭.+[法官審判長]+|^法官|^書記官)/.test(term)){o+="\n"+term+"\n";continue;}
+			if(/(?:^.+庭.+[法官審判長]+|^大?法官|^書記官)/.test(term)){o+="\n"+term+"\n";continue;}
 		}
 		
 		// paragraph mark: break
