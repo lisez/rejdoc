@@ -3,7 +3,7 @@
  * Copyright (c) 2017-Present lisez <mm4324@gmail.com>
  * All rights reserved. This code is governed by a BSD-style license
  * that can be found in the LICENSE file.
- * version: 1.3
+ * version: 1.31
  ***********************************************/
 
 /***************************************
@@ -35,8 +35,8 @@ function getReJDocString(input) {
 		regexParities	= /^[先後]?訴?[原被]告|^[法定訴訟]*[代理表]+人|^移送機關|^被付懲戒人|^訴願人|^聲請覆審人|^聲請人|^相對人|^再?抗告人|^被?上訴人|^債[務權]人|^[原審選任]*辯護人|^公訴人|律師$/,
 		regexOfficials  = /^.+庭.+[法官審判長]+|^大?法官|^書記官/,
 		// Paragraph Tier
-		regexTier1		= /^[甲乙丙丁戊己庚辛壬癸子丑寅卯辰巳午未申酉戌亥]+(?=[、說：]+)/,
-		regexTier2		= /^[壹貳叁參肆伍陸柒捌玖拾一二三四五六七八九十\u25CB\uFF10-\uFF19]+(?=[、說：]+)/,
+		regexTier1		= /^[甲乙丙丁戊己庚辛壬癸子丑寅卯辰巳午未申酉戌亥]+[、說：]+/,
+		regexTier2		= /^[壹貳叁參肆伍陸柒捌玖拾一二三四五六七八九十\u25CB\uFF10-\uFF19]+[、說：]+/,
 		regexTier3		= /^[(（][一二三四五六七八九十\u25CB\uFF10-\uFF19]+[）)]/,
 		regexTier4		= /^[\d\uFF10-\uFF19]+\.\D/,
 		regexTier5		= /^[(（][\d\uFF10-\uFF19]+[)）]\D/,
