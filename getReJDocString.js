@@ -3,8 +3,11 @@
  * Copyright (c) 2017-Present lisez <mm4324@gmail.com>
  * All rights reserved. This code is governed by a BSD-style license
  * that can be found in the LICENSE file.
- * version: 1.31
+ * version: 1.4
  ***********************************************/
+'use strict';
+
+/* exported getReJDocString */
 
 /***************************************
  * Re-layout ROC Judicial doc to easy reuse style.
@@ -12,13 +15,13 @@
  ***************************************/
 function getReJDocString(input) {
 	
-	'use strict';
-	
 	if (typeof input === 'undefined'){return null;}
 
 	var d = input.split('\n'),
 		o = '',
 		term,
+		// detect OS type
+		isWin = navigator.platform.toUpperCase().indexOf('WIN')>-1 ? true : false,
 		// breaks rule
 		duelBreaks	= function(t){o+="\n"+t+"\n";},
 		topBreak	= function(t){o+="\n"+t;},
@@ -47,7 +50,8 @@ function getReJDocString(input) {
 		regexParagraphMarks = /[，。、]+/,
 		regexFootMarks  = /[。：！？]$/,
 		regexClosureMarks = /[\n\r]+([〉》」』】〕〗〙〛，,)\]])/gim,
-		regexBreakMarks = /^[\n\r]+/gim;
+		regexBreakMarks = /^[\n\r]+/gim,
+		regexLineBreak	= /\n|\r/gm;
 
 	for (var i=0; i<d.length; i++){
 		// plain text table: break
@@ -66,7 +70,7 @@ function getReJDocString(input) {
 		// special columns: break
 		if( regexFormalDate.test(term)	||
 			regexTopColumns.test(term)	||
-			regexLawArticle.test(term)	
+			regexLawArticle.test(term)
 			){duelBreaks(term);continue;}
 
 		// special columns: break
@@ -79,10 +83,10 @@ function getReJDocString(input) {
 		
 		// paragraph mark: break
 		if(regexTier1.test(term) ||
-		   regexTier2.test(term) ||
-		   regexTier3.test(term) ||
-		   regexTier4.test(term) ||
-		   regexTier5.test(term)){topBreak(term);continue;}
+			regexTier2.test(term) ||
+			regexTier3.test(term) ||
+			regexTier4.test(term) ||
+			regexTier5.test(term)){topBreak(term);continue;}
 
 		// if a sentense has common punctuation marks but not in the foot: combine
 		if(regexAllMarks.test(term) && !regexFootMarks.test(term)){o+=term;continue;}
@@ -96,6 +100,8 @@ function getReJDocString(input) {
 	o = o.replace(regexClosureMarks, "$1");
 	// surplus line breaks: delete
 	o = o.replace(regexBreakMarks, '');
+	// compatible for Windows
+	if(isWin) o = o.replace(regexLineBreak, "\n\r");
 
 	return o;
 }
